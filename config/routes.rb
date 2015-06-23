@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   get "/home", to: "home#index", as: "root"
 
-  resources :users
+  resources :users, only: [:edit, :update]
+
+  get "/matches", to: "matches#index"
 end
