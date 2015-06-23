@@ -21,6 +21,6 @@ RSpec.describe "Login with Github OAuth" do
 
     expect(current_path).to eq(root_path)
     expect(user.description).to eq("I like to pair program?")
-    expect(user.languages.first).to eq("ruby")
+    expect(user.languages.first.name).to eq("ruby")
   end
 end

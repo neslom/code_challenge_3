@@ -16,4 +16,20 @@ RSpec.describe User do
       expect(user.first_visit?).to be_truthy
     end
   end
+
+  describe "#update_info" do
+    it "updates a user's description and languages" do
+      user = User.create(uid: "1241sfd", description: "hey")
+
+      expect(user.description).to eq("hey")
+      expect(user.languages).to be_empty
+
+      params = {description: "yolo", languages: {"scala" => "1"}}
+
+      user.update_info(params)
+
+      expect(user.description).to eq("yolo")
+      expect(user.languages.first.name).to eq("scala")
+    end
+  end
 end
