@@ -3,10 +3,13 @@
     <%= bootstrap_form_for(@user) do |f| %>
       <%= f.text_area :description %>
 
-      <%= fields_for :languages, @user.languages do |language_fields| %>
-        <%= language_fields.check_box :ruby %>
+      <%= f.fields_for :languages do |language_fields| %>
+        <% @languages.each do |language| %>
+          <%= language_fields.check_box language.name %>
+        <% end %>
       <% end %>
 
+      <br>
       <%= f.submit %>
     <% end %>
   </div>
