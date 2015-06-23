@@ -1,1 +1,13 @@
-edit
+<div class="container">
+  <div class="col-sm-offset-3 col-sm-5">
+    <%= bootstrap_form_for(@user) do |f| %>
+      <%= f.text_area :description %>
+
+      <%= fields_for :languages, @user.languages do |language_fields| %>
+        <%= language_fields.check_box :ruby %>
+      <% end %>
+
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
