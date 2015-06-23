@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6 match centered">
+    <% @matches.each do |match| %>
+      <h4><%= match.name %></h4>
+      <p><%= match.description %></p>
+      <h5>Languages</h5>
+      <p><%= match.languages %></p>
+    <% end %>
+  </div>
+  <div class="col-sm-3"></div>
+</div>
