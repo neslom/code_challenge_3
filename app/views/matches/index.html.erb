@@ -1,11 +1,14 @@
 <div class="container">
   <div class="col-sm-3"></div>
   <div class="col-sm-6 match centered">
+    <%= will_paginate @matches %>
     <% @matches.each do |match| %>
       <h4><%= match.name %></h4>
       <p><%= match.description %></p>
       <h5>Languages</h5>
-      <p><%= match.languages %></p>
+      <% match.languages.each do |language| %>
+        <p><%= language.name %></p>
+      <% end %>
     <% end %>
   </div>
   <div class="col-sm-3"></div>
