@@ -15,6 +15,7 @@ gem "twitter-bootstrap-rails"
 gem 'omniauth-github'
 gem 'dotenv-rails'
 gem 'bootstrap_form'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'rspec-rails'
