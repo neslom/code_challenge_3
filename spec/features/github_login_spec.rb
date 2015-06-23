@@ -14,13 +14,13 @@ RSpec.describe "Login with Github OAuth" do
     login_with_oauth
     user = User.last
 
-    fill_in("user[description]", with: "I like to pair program?")
+    fill_in("user[description]", with: "I like to pair program")
     check "user[languages][ruby]"
 
     click_link_or_button("Update User")
 
     expect(current_path).to eq(root_path)
-    expect(user.description).to eq("I like to pair program?")
+    expect(user.description).to eq("I like to pair program")
     expect(user.languages.first.name).to eq("ruby")
   end
 end
