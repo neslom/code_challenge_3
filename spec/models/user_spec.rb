@@ -8,4 +8,12 @@ RSpec.describe User do
 
     expect(user.languages.count).to eq(2)
   end
+
+  describe "#first_visit?" do
+    it "returns true if the user was just created" do
+      user = User.create(uid: "1241sfd")
+
+      expect(user.first_visit?).to be_truthy
+    end
+  end
 end
