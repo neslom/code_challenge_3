@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
     user.picture_url = data.info.image
     user.token = data.credentials.token
 
-    user.save!
-
     user
   end
 
+  def new_record?
+  end
 end
