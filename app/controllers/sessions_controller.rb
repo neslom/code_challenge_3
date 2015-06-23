@@ -6,14 +6,14 @@ class SessionsController < ApplicationController
     data = request.env["omniauth.auth"]
     user = User.find_or_create_from_auth(data)
 
-    if user && user.new_record?
+    if user
       session[:user_id] = user.id
       flash[:notice] = "Welcome, #{user.name}!"
-      redirect_to edit_user_path(user)
-    elsif user
-      session[:user_id] = user.id
-      flash[:notice] = "Welcome, #{user.name}!"
-      redirect_to root_path
+      if user.first_visit?
+        redirect_to edit_user_path(user)
+      else
+        redirect_to root_path
+      end
     else
       flash[:notice] = "Sorry, something went wrong"
       redirect_to "/"

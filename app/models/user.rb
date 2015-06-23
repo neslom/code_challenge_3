@@ -6,9 +6,12 @@ class User < ActiveRecord::Base
     user.picture_url = data.info.image
     user.token = data.credentials.token
 
+    user.save
+
     user
   end
 
-  def new_record?
+  def first_visit?
+    (Time.now - created_at) < 30
   end
 end

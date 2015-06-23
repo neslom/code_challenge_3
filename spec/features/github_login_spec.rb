@@ -9,6 +9,4 @@ RSpec.describe "Login with Github OAuth" do
 
     expect(current_path).to eq(edit_user_path(user))
   end
-
-  #scenario "
 end
