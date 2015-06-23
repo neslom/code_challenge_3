@@ -6,10 +6,14 @@ RSpec.describe "Login with Github OAuth" do
     login_with_oauth
     user = User.last
 
+    within(".flash") do
+      expect(page).to have_content("Welcome, #{user.name}!")
+    end
+
     expect(current_path).to eq(edit_user_path(user))
   end
 
-  xscenario "user fills in text box with description about him or herself" do
+  scenario "user fills in text box with description about him or herself" do
     Language.create(name: "ruby")
     login_with_oauth
     user = User.last
@@ -19,8 +23,12 @@ RSpec.describe "Login with Github OAuth" do
 
     click_link_or_button("Update User")
 
+    within(".flash") do
+      expect(page).to have_content("Your info has been saved")
+    end
+
     expect(current_path).to eq(root_path)
-    expect(user.description).to eq("I like to pair program")
     expect(user.languages.first.name).to eq("ruby")
+    expect(User.last.description).to eq("I like to pair program")
   end
 end
