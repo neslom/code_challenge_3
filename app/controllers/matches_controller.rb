@@ -11,9 +11,10 @@ class MatchesController < ApplicationController
       status = match.update_status!(params[:like])
       flash[:notice] = status if !status.empty?
       redirect_to matches_path
-    elsif current_user.match_created?(params[:match_id], params[:like])
-      #current_user.matches.create(match_uid: params[:match_uid],
-                                      #like: params[:like])
+    elsif current_user.matches.create(match_uid: params[:match_uid],
+                                      like: params[:like])
+      params[:like] == "0" ? liked = "disliked" : liked = "liked"
+      flash[:notice] = "You #{liked} #{@user.name}"
       redirect_to :back
     else
       flash[:alert] = "Uh oh. Try again"
