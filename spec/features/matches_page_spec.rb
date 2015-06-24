@@ -35,5 +35,24 @@ RSpec.describe "Matches Screen" do
     within(".flash") do
       expect(page).to have_content("You liked #{user.name}")
     end
+
+    expect(Match.last.like).to eq("1")
+  end
+
+  xscenario "clicks check button to 'dislike' a pair" do
+    login_with_oauth
+    current_user = User.last
+    visit matches_path
+
+    expect do
+      click_link_or_button("dislike me")
+      #find(".fa-times").click
+    end.to change { current_user.matches.count }.from(0).to(1)
+
+    within(".flash") do
+      expect(page).to have_content("You disliked #{user.name}")
+    end
+
+    expect(Match.last.like).to eq("0")
   end
 end
