@@ -37,7 +37,6 @@ body {
 }
 
 .paginate-links {
-  position: fixed;
   margin-top: 10em;
   left: 50%;
   transform: translate(-50%, -50%);

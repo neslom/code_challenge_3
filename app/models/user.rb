@@ -30,4 +30,14 @@ class User < ActiveRecord::Base
 
     return self
   end
+
+  def non_matched
+    User.where.not(uid: matched_uids)
+  end
+
+  private
+
+  def matched_uids
+    matches.pluck(:match_uid)
+  end
 end

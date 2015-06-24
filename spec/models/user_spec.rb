@@ -43,4 +43,16 @@ RSpec.describe User do
       expect(user.matches.last.match_uid).to eq(user2.uid)
     end
   end
+
+  describe "#non_matched" do
+    it "returns only matches that have not been liked or disliked by the user" do
+      user = User.create(uid: "1241sfd", description: "hey")
+      user2= User.create(uid: "12345", description: "yo")
+
+      match = user.matches.create(match_uid: user2.uid,
+                          like: "1")
+
+      expect(user.non_matched).to_not include(match)
+    end
+  end
 end
