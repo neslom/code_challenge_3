@@ -23,5 +23,6 @@ group :development, :test do
   gem 'launchy'
   gem 'pry'
   gem 'web-console', '~> 2.0'
+  gem 'simplecov', require: false
 end
 
