@@ -18,4 +18,14 @@ RSpec.describe "Auth" do
 
     expect(current_path).to eq("/")
   end
+
+  scenario "non-logged in user tries to visit home page but gets denied" do
+    visit root_path
+
+    within(".flash") do
+      expect(page).to have_content("You must be logged in to do that")
+    end
+
+    expect(current_path).to eq("/")
+  end
 end
