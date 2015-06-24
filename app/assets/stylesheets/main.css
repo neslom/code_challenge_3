@@ -22,6 +22,26 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.right {
+  position: absolute;
+  top: 50%;
+  margin-right: -100px;
+}
+
+.paginate-links {
+  position: fixed;
+  margin-top: 10em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .match {
   text-align: center;
+}
+
+.pics {
+  height: 200px;
+  width: 200px;
+  margin-bottom: 8px;
+  box-shadow: 4px 4px 4px #777;
 }

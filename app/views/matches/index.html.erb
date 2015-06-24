@@ -1,15 +1,21 @@
 <div class="container">
+  <div class="paginate-links"><%= will_paginate @matches %></div>
   <div class="col-sm-3"></div>
   <div class="col-sm-6 match centered">
-    <%= will_paginate @matches %>
     <% @matches.each do |match| %>
       <h4><%= match.name %></h4>
+      <image src="<%= match.picture_url %>" class="pics"></image>
       <p><%= match.description %></p>
       <h5>Languages</h5>
       <% match.languages.each do |language| %>
         <p><%= language.name %></p>
       <% end %>
     <% end %>
+    <div class="col-sm-3">
+      <i class="fa fa-times fa-5x"></i>
+    </div>
+    <div class="col-sm-3 pull-right">
+      <i class="fa fa-check fa-5x"></i>
+    </div>
   </div>
-  <div class="col-sm-3"></div>
 </div>
