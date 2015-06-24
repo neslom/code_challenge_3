@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get "/matches", to: "matches#index"
 
   put "/matches", to: "matches#update"
+
+  delete "/logout", to: "sessions#destroy", as: "logout"
 end

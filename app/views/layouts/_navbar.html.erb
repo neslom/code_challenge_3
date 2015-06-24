@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -8,19 +8,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Chat Stuff</a>
+      <a class="navbar-brand" href="#">Pairr</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav"></ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if !current_user %>
-          <%= link_to login_path do %>
-            <%= image_tag "http://connect.soundcloud.com/2/btn-connect-m.png", style: "margin-top: 10px" %>
-      <% end %>
-      <% else %>
-        <li><%= link_to "Logout", logout_path, method: :delete %></li>
+        <% if current_user %>
+          <li><%= link_to "Logout", logout_path, method: :DELETE %></li>
       <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

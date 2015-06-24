@@ -31,4 +31,13 @@ RSpec.describe "Login with Github OAuth" do
     expect(user.languages.first.name).to eq("ruby")
     expect(User.last.description).to eq("I like to pair program")
   end
+
+  scenario "user can logout once in" do
+    login_with_oauth
+    user = User.last
+
+    click_link_or_button("Logout")
+
+    expect(page).to have_content("Peace out")
+  end
 end
