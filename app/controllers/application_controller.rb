@@ -6,9 +6,11 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    redirect_to "/" if !current_user
-    flash[:notice] = "You must be logged in to do that"
+    if !current_user
+      redirect_to "/"
+      flash[:notice] = "You must be logged in to do that"
+    end
   end
 
-  helper_method :current_user
+  helper_method :current_user, :logged_in?
 end

@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
-  def index
+  before_action :logged_in?
 
+  def index
   end
 end
