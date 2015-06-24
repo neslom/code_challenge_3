@@ -4,7 +4,7 @@ class MatchesController < ApplicationController
   end
 
   def update
-    if current_user.matches.create(match_uid: params[:user_uid],
+    current_user.matches.create(match_uid: params[:user_uid],
                                 like: params[:like])
   end
 end
