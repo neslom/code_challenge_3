@@ -1,0 +1,59 @@
+body {
+  background-color: #F7FFC2;
+}
+
+.btn{
+  background: transparent;
+  color: black;
+
+  /* CSS Transition */
+  -webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -ms-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -o-transition: background .2s ease-in-out, border .2s ease-in-out;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.fa-check {
+  color: green;
+}
+
+.fa-times {
+  color: red;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+.right {
+  position: absolute;
+  top: 50%;
+  margin-right: -100px;
+}
+
+.paginate-links {
+  margin-top: 10em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#pairs {
+  width: 100%;
+  text-align: center;
+}
+
+.match {
+  text-align: center;
+}
+
+.pics {
+  height: 200px;
+  width: 200px;
+  margin-bottom: 8px;
+  box-shadow: 4px 4px 4px #777;
+}
