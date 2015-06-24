@@ -42,6 +42,11 @@ body {
   transform: translate(-50%, -50%);
 }
 
+#pairs {
+  width: 100%;
+  text-align: center;
+}
+
 .match {
   text-align: center;
 }
