@@ -38,9 +38,10 @@ RSpec.describe User do
       user = User.create(uid: "1241sfd", description: "hey")
       user2 = User.create(uid: "6666666", description: "hey")
 
-      user.matches.create(user_uid: user2.uid)
+      binding.pry
+      user.matches.create(match_uid: user2.uid)
 
-      expect(user.matches.first.uid).to eq(user2.uid)
+      expect(user.matches.last.match_uid).to eq(user2.uid)
     end
   end
 end

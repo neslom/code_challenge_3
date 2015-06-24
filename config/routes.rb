@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update]
 
   get "/matches", to: "matches#index"
+
+  put "/matches", to: "matches#update"
 end
