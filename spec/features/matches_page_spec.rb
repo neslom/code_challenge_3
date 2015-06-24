@@ -22,14 +22,13 @@ RSpec.describe "Matches Screen" do
     expect(page).to have_content(user.languages.first.name)
   end
 
-  xscenario "clicks check button to 'like' a pair" do
+  scenario "clicks check button to 'like' a pair" do
     login_with_oauth
     current_user = User.last
     visit matches_path
 
     expect do
       click_link_or_button("like me")
-      #find(".fa-check").click
     end.to change { current_user.matches.count }.from(0).to(1)
 
     within(".flash") do
@@ -39,14 +38,13 @@ RSpec.describe "Matches Screen" do
     expect(Match.last.like).to eq("1")
   end
 
-  xscenario "clicks check button to 'dislike' a pair" do
+  scenario "clicks check button to 'dislike' a pair" do
     login_with_oauth
     current_user = User.last
     visit matches_path
 
     expect do
       click_link_or_button("dislike me")
-      #find(".fa-times").click
     end.to change { current_user.matches.count }.from(0).to(1)
 
     within(".flash") do
@@ -54,5 +52,17 @@ RSpec.describe "Matches Screen" do
     end
 
     expect(Match.last.like).to eq("0")
+  end
+
+  scenario "alerted to successful match" do
+    user.matches.create(match_uid: "123456789",
+                        like: "1")
+    login_with_oauth
+
+    visit matches_path
+    click_link_or_button("like me")
+    within(".flash") do
+      expect(page).to have_content("Match made!")
+    end
   end
 end

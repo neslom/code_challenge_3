@@ -15,4 +15,20 @@ module ApplicationHelper
     end
     nil
   end
+
+  def like_icon
+    if Rails.env.test?
+      "like me"
+    else
+      '<i class="fa fa-check fa-5x" alt="yes"></i>'.html_safe
+    end
+  end
+
+  def dislike_icon
+    if Rails.env.test?
+      "dislike me"
+    else
+      '<i class="fa fa-times fa-5x" alt="no"></i>'.html_safe
+    end
+  end
 end
