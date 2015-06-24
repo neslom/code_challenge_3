@@ -4,7 +4,7 @@
       <h3>Sorry, no pairs for you!</h3>
     <% else %>
       <div id="pairs">
-        <%= will_paginate @pairs %>
+        <%= will_paginate @pairs, renderer: BootstrapPagination::Rails %>
         <% @pairs.each do |pairs| %>
           <h4><%= pairs.name %></h4>
           <image src="<%= pairs.picture_url %>" class="pics"></image>
