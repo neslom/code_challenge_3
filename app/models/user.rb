@@ -31,6 +31,13 @@ class User < ActiveRecord::Base
     return self
   end
 
+  def ordered_matches
+    arr = []
+    arr << Match.potential_matches(self)
+    arr << self.non_matched
+    return arr.flatten
+  end
+
   def non_matched
     User.where.not(uid: matched_uids)
   end
