@@ -8,7 +8,7 @@ class MatchesController < ApplicationController
   end
 
   def update
-    match = Match.paired?(current_user, @user)
+    match = Match.paired(current_user, @user)
     if match
       status = match.update_status!(params[:like])
       flash[:notice] = status if !status.empty?

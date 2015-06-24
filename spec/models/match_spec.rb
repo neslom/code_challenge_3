@@ -28,4 +28,13 @@ RSpec.describe Match do
       expect(Match.potential_matches(user2).first).to eq(user)
     end
   end
+
+  describe ".paired" do
+    it "returns a user if it is a match" do
+      user.matches.create(match_uid: user2.uid, like: "1")
+      user2.matches.create(match_uid: user.uid, like: "1")
+
+      expect(Match.paired(user, user2).class).to eq(Match)
+    end
+  end
 end

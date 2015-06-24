@@ -6,7 +6,7 @@ class Match < ActiveRecord::Base
     User.where(id: matches)
   end
 
-  def self.paired?(current_user, user)
+  def self.paired(current_user, user)
     where(match_uid: current_user.uid).where(user_id: user.id).where(status: "open")[0]
   end
 
