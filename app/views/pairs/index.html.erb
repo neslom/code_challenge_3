@@ -3,6 +3,7 @@
     <% if @pairs.empty? %>
       <h3>Sorry, no pairs for you!</h3>
     <% else %>
+      <div id="pairs">
       <% @pairs.each do |pairs| %>
         <h4><%= pairs.name %></h4>
         <image src="<%= pairs.picture_url %>" class="pics"></image>
@@ -12,6 +13,7 @@
           <p><%= language.name %></p>
         <% end %>
       <% end %>
+      </div>
     <% end %>
   </div>
 </div>

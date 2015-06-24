@@ -1,5 +1,6 @@
 class MatchesController < ApplicationController
   before_action :set_user, only: [:update]
+  before_action :logged_in?
 
   def index
     #@matches = current_user.non_matched.paginate(page: params[:page], per_page: 1)
