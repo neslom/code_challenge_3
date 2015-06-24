@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
     return arr.flatten
   end
 
+  def match_created?(match_uid, like_status)
+    matches.create(match_uid: match_uid, like: like_status)
+  end
+
   def non_matched
     User.where.not(uid: matched_uids)
   end
