@@ -12,10 +12,14 @@
       <% end %>
     <% end %>
     <div class="col-sm-3">
-      <i class="fa fa-times fa-5x"></i>
+      <%= link_to matches_path(like: 0), method: :PUT do %>
+        <i class="fa fa-times fa-5x" alt="no"></i>
+      <% end %>
     </div>
     <div class="col-sm-3 pull-right">
-      <i class="fa fa-check fa-5x"></i>
+      <%= link_to matches_path(like: 1), method: :PUT do %>
+        <i class="fa fa-check fa-5x" alt="yes"></i>
+      <% end %>
     </div>
   </div>
 </div>

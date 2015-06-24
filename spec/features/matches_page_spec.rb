@@ -21,4 +21,15 @@ RSpec.describe "Matches Screen" do
     expect(page).to have_content(user.description)
     expect(page).to have_content(user.languages.first.name)
   end
+
+  scenario "clicks check button to 'like' a pair" do
+    login_with_oauth
+    visit matches_path
+
+    find(".fa-check").click
+
+    within(".flash") do
+      expect(page).to have_content("You liked #{user.name}")
+    end
+  end
 end
