@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   put "/matches", to: "matches#update"
 
   delete "/logout", to: "sessions#destroy", as: "logout"
+
+  get "/pairs", to: "pairs#index"
 end
