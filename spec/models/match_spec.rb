@@ -37,4 +37,30 @@ RSpec.describe Match do
       expect(Match.paired(user, user2).class).to eq(Match)
     end
   end
+
+  describe "#update_status!" do
+    context "second user downvotes the match" do
+      it "updates a match status and returns the appropriate message for doing so" do
+        user.matches.create(match_uid: user2.uid, like: "1")
+        match = user.matches.first
+
+        expect(match.status).to eq("open")
+
+        expect(match.update_status!("0")).to eq("")
+        expect(match.status).to eq("closed")
+      end
+    end
+
+    context "second user approves the match" do
+      it "updates a match status and returns the appropriate message for doing so" do
+        user.matches.create(match_uid: user2.uid, like: "1")
+        match = user.matches.first
+
+        expect(match.status).to eq("open")
+
+        expect(match.update_status!("1")).to eq("Match made!")
+        expect(match.status).to eq("success")
+      end
+    end
+  end
 end
