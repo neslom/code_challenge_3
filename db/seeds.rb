@@ -2575,7 +2575,14 @@ class BuildUsers
     }
   ]
 
-  def self.build
+  def create_language
+    ["ruby", "python", "scala"].each do |lang|
+      Language.create(name: lang)
+    end
+  end
+
+  def build
+    create_language
     USERS.each do |user|
       person = User.create(name: user[:login],
                   picture_url: user[:avatar_url],
@@ -2584,10 +2591,10 @@ class BuildUsers
                   description: user[:description])
 
       ["ruby", "python", "scala"].each do |lang|
-        person.languages.create(name: lang)
+        person.languages << Language.find_by(name: lang)
       end
     end
   end
 end
 
-BuildUsers.build
+BuildUsers.new.build

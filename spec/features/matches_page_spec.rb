@@ -27,8 +27,10 @@ RSpec.describe "Matches Screen" do
     current_user = User.last
     visit matches_path
 
+    #find(".fa-check").click
     expect do
-      find(".fa-check").click
+      click_link_or_button("like me")
+      #find(".fa-check").click
     end.to change { current_user.matches.count }.from(0).to(1)
 
     within(".flash") do
