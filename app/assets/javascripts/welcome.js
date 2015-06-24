@@ -1,4 +1,4 @@
 $(document).ready(function () {
   var $welcome = $('#welcome');
-  $welcome.fadeIn("slow");
+  $welcome.fadeIn(2000);
 });
