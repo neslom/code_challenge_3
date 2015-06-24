@@ -24,9 +24,12 @@ RSpec.describe "Matches Screen" do
 
   scenario "clicks check button to 'like' a pair" do
     login_with_oauth
+    current_user = User.last
     visit matches_path
 
-    find(".fa-check").click
+    expect do
+      find(".fa-check").click
+    end.to change { current_user.matches.count }.from(0).to(1)
 
     within(".flash") do
       expect(page).to have_content("You liked #{user.name}")

@@ -32,4 +32,15 @@ RSpec.describe User do
       expect(user.languages.first.name).to eq("scala")
     end
   end
+
+  describe "#matches" do
+    it "returns a collection of a user's matches" do
+      user = User.create(uid: "1241sfd", description: "hey")
+      user2 = User.create(uid: "6666666", description: "hey")
+
+      user.matches.create(user_uid: user2.uid)
+
+      expect(user.matches.first.uid).to eq(user2.uid)
+    end
+  end
 end
